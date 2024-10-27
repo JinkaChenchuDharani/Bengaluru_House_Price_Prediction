@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bangalore House Price Prediction</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bangalore House Price Prediction</h1>
+      <form action="/predict" method="POST">
+        <label for="location">Location</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="Enter Location"
+          required
+        />
+
+        <label for="sqft">Total Sqft</label>
+        <input
+          type="number"
+          id="sqft"
+          name="sqft"
+          placeholder="Enter Total Sqft"
+          required
+        />
+
+        <label for="bath">Bathrooms</label>
+        <input
+          type="number"
+          id="bath"
+          name="bath"
+          placeholder="Enter Number of Bathrooms"
+          required
+        />
+
+        <label for="bhk">BHK</label>
+        <input
+          type="number"
+          id="bhk"
+          name="bhk"
+          placeholder="Enter Number of BHK"
+          required
+        />
+
+        <button type="submit">Predict Price</button>
+      </form>
+
+      <div class="prediction-result">
+        {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
